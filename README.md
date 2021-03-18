@@ -1,1 +1,2 @@
-## Redis Sentinel Configuration and Encryption policy
+### Redis Sentinel Configuration and Encryption policy
+## Configuration
