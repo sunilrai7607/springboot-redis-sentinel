@@ -16,12 +16,11 @@ spring:
     type: redis
   redis:
     host: localhost
-    port: 6666
-    password: 123pwd
+    port: 6379
+    password: changeit
     sentinel:
       master: masterredis
       nodes:
-        - 10.0.0.16
-        - 10.0.0.17
+        - xx.0.0.xx
     lettuce:
       shutdown-timeout: 200ms
