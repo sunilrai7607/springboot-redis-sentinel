@@ -1,0 +1,27 @@
+cache:
+  config:
+    default-configs:
+      -  cache-name: ONE_HOUR_CACHE
+         timeToLiveSeconds: 3600
+      -  cache-name: TEN_MINUTES_CACHE
+         timeToLiveSeconds: 600
+
+  app-caches:
+    appCachemap:
+      serviceOne_cache: ONE_HOUR_CACHE
+      serviceTwo_cache: TEN_MINUTES_CACHE
+
+spring:
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6666
+    password: 123pwd
+    sentinel:
+      master: masterredis
+      nodes:
+        - 10.0.0.16
+        - 10.0.0.17
+    lettuce:
+      shutdown-timeout: 200ms
