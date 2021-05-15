@@ -14,7 +14,6 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Configuration

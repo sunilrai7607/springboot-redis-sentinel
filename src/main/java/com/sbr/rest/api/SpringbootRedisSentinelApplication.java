@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringbootRedisSentinelApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootRedisSentinelApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootRedisSentinelApplication.class, args);
+    }
 
 }

@@ -12,6 +12,6 @@ public class SampleService {
 
     @Cacheable("serviceOne_cache")
     public List<String> serviceOne(String param) {
-    return null;
+        return null;
     }
 }
