@@ -4,7 +4,7 @@ cache:
       - cache-name: ONE_HOUR_CACHE
         timeToLiveSeconds: 3600
       - cache-name: TEN_MINUTES_CACHE
-        timeToLiveSeconds: 600
+        timeToLiveSeconds: 60
 
   app-caches:
     appCachemap:

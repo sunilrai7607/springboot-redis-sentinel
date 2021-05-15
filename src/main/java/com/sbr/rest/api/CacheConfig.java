@@ -3,8 +3,10 @@ package com.sbr.rest.api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisPassword;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 
 @Configuration
 @Slf4j
+@EnableCaching
 public class CacheConfig {
 
     @Autowired
@@ -29,8 +32,9 @@ public class CacheConfig {
     @Autowired
     private RedisProperties redisProperties;
 
+    @Profile("sentinel")
     @Bean
-    public LettuceConnectionFactory redisConnectionFactory() {
+    public LettuceConnectionFactory defaultRedisConnectionFactory() {
 
         RedisSentinelConfiguration sentinelConfig = new RedisSentinelConfiguration()
                 .master(redisProperties.getSentinel().getMaster());
@@ -39,6 +43,12 @@ public class CacheConfig {
         sentinelConfig.setPassword(RedisPassword.of(redisProperties.getPassword()));
 
         return new LettuceConnectionFactory(sentinelConfig);
+    }
+
+    @Profile("!sentinel")
+    @Bean
+    public LettuceConnectionFactory redisConnectionFactory(){
+        return new LettuceConnectionFactory();
     }
 
     @Bean
